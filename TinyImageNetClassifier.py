@@ -144,11 +144,6 @@ class Classifier:
         summaries_path = config.summary_path + "/" + self.model_name + "/" + time + "_clr_plot/"
         os.makedirs(summaries_path, exist_ok=True)
 
-        x = tf.placeholder(shape=[None, self.input_dims[0], self.input_dims[1], 3], dtype=tf.float32, name='input')
-        is_training = tf.placeholder(dtype=tf.bool, name='is_training')
-
-        self.model(x, is_training)
-
         steps_per_epoch = int(np.ceil(config.train_img_cnt / config.batch_size))
         self.step_size = self.step_factor * steps_per_epoch
 
