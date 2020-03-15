@@ -14,10 +14,10 @@ import os
 
 
 class VGG16:
-    def __init__(self, input_dims=(64, 64), num_classes=200, fully_convo=True, for_cifar100=True):
+    def __init__(self, input_dims=(64, 64), num_classes=200, fully_convo=True, for_tinyimagenet=True):
         self.model_name = 'VGG16'
         self.fully_convo = fully_convo
-        self.for_cifar100 = for_cifar100
+        self.for_tinyimagenet = for_tinyimagenet
         self.num_classes = num_classes
         self.k_init = tf.contrib.layers.xavier_initializer()
         #self.k_init = tf.random_normal_initializer(mean=0.0, stddev=0.1)
@@ -93,8 +93,8 @@ class VGG16:
                 return fc_logits, fc_op
             
             else:
-                if self.for_cifar100:
-                    # In cifar100 there are 200 classes only which is 1/5th of Imagenet classes
+                if self.for_tinyimagenet:
+                    # In tinyimagenet there are 200 classes only, which is 1/5th of Imagenet classes
                     # So reduced number of convolutional channels
                     channels = 1024
                 else:

@@ -11,9 +11,7 @@ maxLR = 2.88e-4     # 1134
 
 step_factor = 2
 
-#weight_decay = (5e-4) / 2
-# dividing by 2 to 
-weight_decay = 0.0
+weight_decay = 5e-4
 
 def g(x):
     print(x.name, " ", x.get_shape().as_list())
