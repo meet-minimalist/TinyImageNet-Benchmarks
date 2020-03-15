@@ -104,12 +104,13 @@ def get_batch(tfrecords_file_list, batch_size, augment=False, is_validation_set=
             return dataset_init, img, label
 
 """
-img_, label_ = get_batch(config.train_tfrecord_list, 20, augment=False, is_validation_set=True)
+img_, label_ = get_batch(config.test_tfrecord_list, 20, augment=False, is_validation_set=True)
+
 
 with tf.Session() as sess:
     img_1, label_1 = sess.run([img_, label_])
 
 from PIL import Image
-Image.fromarray(np.uint8(img_1[0] * 255))
+Image.fromarray(np.uint8(img_1[0] * 255)).show()
 """
     

@@ -20,8 +20,9 @@ parser.add_argument("--model", type=str, help='Use gpu for processing. \n Option
 							17. squeezenet, \
 							18. nasnet, 19. mnasnet, \
 							20. efficientnet ')
-parser.add_argument("--mode", type=str, default='training', help='Mode of training: dry_run or training. Default: training')
-
+parser.add_argument("--mode", type=str, default='training', help='Mode of training: dry_run, training and eval. Default: training')
+parser.add_argument("--ckpt_path", type=str, help="Checkpoint path for evaluation purposes.")
+parser.add_argument("--eval_dataset", type=str, help="Evaluation to be done on which dataset : train or test, Default: train")
 
 args = parser.parse_args()
 
@@ -38,10 +39,15 @@ if __name__ == "__main__":
 	elif args.mode.lower() == 'training':
 		model.train()
 	
-	#restore_path = "./summaries/vgg/2020_01_13_20_05_27_879414_training_summary/best_checkpoint/vgg_eps76-test_loss_2.57-test_top_1_acc_42.46.ckpt"
-	#model.train(resume=True, resume_from_eps=80, resume_from_gstep=31280, restore_ckpt=restore_path)
+		#restore_path = "./summaries/vgg/2020_01_13_20_05_27_879414_training_summary/best_checkpoint/vgg_eps76-test_loss_2.57-test_top_1_acc_42.46.ckpt"
+		#model.train(resume=True, resume_from_eps=80, resume_from_gstep=31280, restore_ckpt=restore_path)
 
-	#ckpt_path = "./summaries/vgg_bn/2020_01_16_08_55_03_523669_training_summary/best_checkpoint/vgg_bn_eps64-test_loss_2.18-test_top_1_acc_52.90.ckpt"
-	#model.eval_on_dataset(ckpt_path, train_dataset=False)
-	#model.eval_on_dataset_v2(ckpt_path, dataset_path=config.dataset_path, training_set=False)
+
+	elif args.mode.lower() == 'eval':
+		ckpt_path = args.ckpt_path
+		import config
+		if args.eval_dataset.lower() == 'train':
+			model.eval_on_dataset(ckpt_path, train_dataset=True)
+		else:
+			model.eval_on_dataset(ckpt_path, train_dataset=False)
 			
