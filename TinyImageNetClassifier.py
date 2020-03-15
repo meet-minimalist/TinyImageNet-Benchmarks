@@ -98,7 +98,7 @@ class Classifier:
         
 
         model_files = glob.glob("./models/*")
-        os.makedirs(summaries_path + "./models", exist_ok=True)
+        os.makedirs(summaries_path + "/models", exist_ok=True)
         for model_file in model_files:
             if self.model_name in model_file.lower():
                 shutil.copy2(model_file, summaries_path + "/models/")
@@ -180,7 +180,7 @@ class Classifier:
                 shutil.copy2(current_files[i], summaries_path)
         
         model_files = glob.glob("./models/*")
-        os.makedirs(summaries_path + "./models", exist_ok=True)
+        os.makedirs(summaries_path + "/models", exist_ok=True)
         for model_file in model_files:
             if self.model_name in model_file.lower():
                 shutil.copy2(model_file, summaries_path + "/models/")
