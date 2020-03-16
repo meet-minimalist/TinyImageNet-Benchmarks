@@ -119,10 +119,15 @@ class Classifier:
 
         train_initializer, img_train_data, label_train_data = get_batch(config.train_tfrecord_list, config.batch_size, augment=True)
 
-        with tf.Session() as sess:
+        ### Restrict the GPU usage for training if possible. ###
+        sess_config = tf.ConfigProto()
+        sess_config.gpu_options.allow_growth = True
+        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
+        
+        with tf.Session(config=sess_config) as sess:
             sess.run(tf.global_variables_initializer())
             writer_train = tf.summary.FileWriter(summaries_path)
-            writer_train.add_graph(sess.graph)
+            #writer_train.add_graph(sess.graph)
             for i in range(config.total_steps):                
                 try:
                     imgs, labels = sess.run([img_train_data, label_train_data])
@@ -223,7 +228,7 @@ class Classifier:
         ### Restrict the GPU usage for training if possible. ###
         sess_config = tf.ConfigProto()
         sess_config.gpu_options.allow_growth = True
-        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.7
+        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
                
         ### Start training. ###
         with tf.Session(config=sess_config) as sess:
