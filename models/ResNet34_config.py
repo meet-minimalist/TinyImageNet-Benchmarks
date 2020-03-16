@@ -6,7 +6,7 @@ Created on Sat Jul 20 12:20:43 2019
 """
 
 # For resnet34
-minLR = 5.49e-6     # 832
+minLR = 2.37e-6     # 768
 maxLR = 8.52e-3     # 1392
 step_factor = 2
 
