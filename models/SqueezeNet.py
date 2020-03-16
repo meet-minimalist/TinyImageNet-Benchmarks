@@ -53,7 +53,8 @@ class SqueezeNet:
             with tf.variable_scope('fire_blocks'):
                 fire_block_2 = self._fire_block(pool1, 16, 64, 64, 'fire_block_2')
                 fire_block_3 = self._fire_block(fire_block_2, 16, 64, 64, 'fire_block_3')
-                fire_block_4 = self._fire_block(fire_block_3, 32, 128, 128, 'fire_block_4')
+                fire_block_4_ip = fire_block_2 + fire_block_3
+                fire_block_4 = self._fire_block(fire_block_4_ip, 32, 128, 128, 'fire_block_4')
                 g(fire_block_4)
                 # [None x 14 x 14 x 256]
                 
@@ -62,9 +63,11 @@ class SqueezeNet:
                 # [None x 6 x 6 x 256]
                     
                 fire_block_5 = self._fire_block(pool2, 32, 128, 128, 'fire_block_5')
-                fire_block_6 = self._fire_block(fire_block_5, 48, 192, 192, 'fire_block_6')
+                fire_block_6_ip = fire_block_5 + pool2
+                fire_block_6 = self._fire_block(fire_block_6_ip, 48, 192, 192, 'fire_block_6')
                 fire_block_7 = self._fire_block(fire_block_6, 48, 192, 192, 'fire_block_7')
-                fire_block_8 = self._fire_block(fire_block_7, 64, 256, 256, 'fire_block_8')
+                fire_block_8_ip = fire_block_7 + fire_block_6
+                fire_block_8 = self._fire_block(fire_block_8_ip, 64, 256, 256, 'fire_block_8')
                 g(fire_block_8)
                 # [None x 6 x 6 x 512]
             
@@ -73,12 +76,13 @@ class SqueezeNet:
                 # [None x 2 x 2 x 512]
 
                 fire_block_9 = self._fire_block(pool3, 64, 256, 256, 'fire_block_9')
-                fire_block_9 = tf.layers.dropout(fire_block_9, rate=0.5)
-                g(fire_block_9)
+                fire_block_9_op = fire_block_9 + pool3
+                fire_block_9_op = tf.layers.dropout(fire_block_9_op, rate=0.5)
+                g(fire_block_9_op)
                 # [None x 2 x 2 x 512]
             
             with tf.variable_scope('tail'):
-                conv2 = tf.layers.conv2d(fire_block_9, 200, (1, 1), 1, 'valid', activation=tf.nn.relu, use_bias=True, kernel_initializer=self.k_init, kernel_regularizer=self.k_reg)
+                conv2 = tf.layers.conv2d(fire_block_9_op, 200, (1, 1), 1, 'valid', activation=tf.nn.relu, use_bias=True, kernel_initializer=self.k_init, kernel_regularizer=self.k_reg)
                 g(conv2)
                 # [None x 2 x 2 x 200]
 
