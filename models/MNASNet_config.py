@@ -6,7 +6,7 @@ Created on Sat Jul 20 12:20:43 2019
 """
 
 # For MNASNet
-minLR = 1.038e-4       # 1056
+minLR = 1.101e-5       # 885
 maxLR = 0.0304         # 1489
 step_factor = 2
 
