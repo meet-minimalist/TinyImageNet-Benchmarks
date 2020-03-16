@@ -5,11 +5,6 @@ Created on Sat Jul 20 13:25:37 2019
 @author: Meet
 """
 
-import time
-print("4 hours sleep started")
-time.sleep(4 * 60 * 60)
-print("4 hours sleep completed")
-
 import os
 import argparse
 from TinyImageNetClassifier import Classifier
