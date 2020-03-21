@@ -5,9 +5,9 @@ Created on Sat Jul 20 12:20:43 2019
 @author: Meet
 """
 
-# For resnet34
-minLR = 3.65e-6     # 801
-maxLR = 6.59e-4     # 1197
+# For inception_v4
+minLR = 7.48e-7     # 680
+maxLR = 2.25e-4     # 1115
 step_factor = 2
 
 weight_decay = 0.0

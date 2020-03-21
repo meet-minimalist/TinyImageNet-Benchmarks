@@ -41,8 +41,8 @@ if __name__ == "__main__":
 	elif args.mode.lower() == 'training':
 		model.train()
 	
-		#restore_path = "./summaries/vgg/2020_01_13_20_05_27_879414_training_summary/best_checkpoint/vgg_eps76-test_loss_2.57-test_top_1_acc_42.46.ckpt"
-		#model.train(resume=True, resume_from_eps=80, resume_from_gstep=31280, restore_ckpt=restore_path)
+		#restore_path = "./summaries/efficientnet/2020_03_20_20_34_38_697290_training_summary/best_checkpoint/efficientnet_eps90-test_loss_3.02-test_top_1_acc_35.37.ckpt"
+		#model.train(resume=True, resume_from_eps=90, resume_from_gstep=35190, restore_ckpt=restore_path)
 
 
 	elif args.mode.lower() == 'eval':

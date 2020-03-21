@@ -30,13 +30,13 @@ EfficientNetL2 		4.3, 		 5.3, 		  800, 		   0.5
 # For EfficientNet-B0
 #minLR = 2.31e-6       # 766
 #maxLR = 1.94e-4       # 1104
-minLR = 1.76e-3       # 1272
-maxLR = 9.58e-3       # 1401
+#minLR = 1.76e-3       # 1272
+#maxLR = 9.58e-3       # 1401
 
 
 # For EfficientNet-B2
-#minLR = 
-#maxLR = 
+minLR = 7.23e-4        # 1204
+maxLR = 0.02531        # 1475
 step_factor = 2
 
 depth_divisor = 8
