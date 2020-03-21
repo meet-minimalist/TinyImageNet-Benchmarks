@@ -7,7 +7,9 @@ Created on Sat Jul 20 13:25:37 2019
 
 import os
 import argparse
+import config
 from TinyImageNetClassifier import Classifier
+import tensorflow as tf 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--gpu", type=str, default='True', help='Use gpu for processing. Options: True and False. Default: True')
@@ -21,7 +23,7 @@ parser.add_argument("--model", type=str, help='Use gpu for processing. \n Option
 							18. nasnet, 19. mnasnet, \
 							20. efficientnet ')
 parser.add_argument("--mode", type=str, default='training', help='Mode of training: dry_run, training and eval. Default: training')
-parser.add_argument("--ckpt_path", type=str, help="Checkpoint path for evaluation purposes.")
+parser.add_argument("--ckpt_path", type=str, help="Checkpoint folder for evaluation purposes. (Latest checkpoint will be selected automatically.")
 parser.add_argument("--eval_dataset", type=str, help="Evaluation to be done on which dataset : train or test, Default: train")
 
 args = parser.parse_args()
@@ -44,8 +46,9 @@ if __name__ == "__main__":
 
 
 	elif args.mode.lower() == 'eval':
-		ckpt_path = args.ckpt_path
-		import config
+		ckpt_path = tf.train.latest_checkpoint(args.ckpt_path)
+		print("Restoring from ckpt: ", ckpt_path)
+		
 		if args.eval_dataset.lower() == 'train':
 			model.eval_on_dataset(ckpt_path, train_dataset=True)
 		else:

@@ -6,7 +6,7 @@ Created on Sat Jul 20 12:20:43 2019
 """
 
 minLR = 7.23e-6     # 853
-maxLR = 1.93e-3     # 1279
+maxLR = 0.01167     # 1416
 step_factor = 2
 
 weight_decay = 0.0

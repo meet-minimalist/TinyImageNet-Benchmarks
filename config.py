@@ -48,7 +48,7 @@ def get_model(model_name, x, is_training):
         from models.Inception_v4 import Inception_v4
         import models.Inception_v4_config as config
         model = Inception_v4()
-    elif model_name == 'inception_resnet_V2':
+    elif model_name == 'inception_resnet_v2':
         from models.Inception_ResNet_v2 import Inception_ResNet_v2
         import models.Inception_ResNet_v2_config as config
         model = Inception_ResNet_v2()
