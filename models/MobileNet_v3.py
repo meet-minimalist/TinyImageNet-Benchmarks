@@ -113,12 +113,12 @@ class MobileNet_v3:
                 g(conv1)
                 # [None x 32 x 32 x 16]
                 
-            bneck_1 = self.bottelneck_layer(conv1, is_training, 16, 16, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_1')
-            bneck_2 = self.bottelneck_layer(bneck_1, is_training, 64, 24, (3, 3), stride=2, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_2')
+            bneck_1 = self.bottelneck_layer(conv1, is_training, 16, 16, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_1')
+            bneck_2 = self.bottelneck_layer(bneck_1, is_training, 64, 24, (3, 3), stride=2, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_2')
             g(bneck_2)
             # [None x 16 x 16 x 24]
 
-            bneck_3 = self.bottelneck_layer(bneck_2, is_training, 72, 24, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_3')
+            bneck_3 = self.bottelneck_layer(bneck_2, is_training, 72, 24, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_3')
             bneck_4 = self.bottelneck_layer(bneck_3, is_training, 72, 40, (5, 5), stride=2, padding='SAME', activation='RE', apply_se=True, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_4')
             g(bneck_4)
             # [None x 8 x 8 x 40]
@@ -128,13 +128,13 @@ class MobileNet_v3:
             g(bneck_5)
             # [None x 8 x 8 x 40]
 
-            bneck_7 = self.bottelneck_layer(bneck_6, is_training, 240, 80, (3, 3), stride=2, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_7')
-            bneck_8 = self.bottelneck_layer(bneck_7, is_training, 200, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_8')
+            bneck_7 = self.bottelneck_layer(bneck_6, is_training, 240, 80, (3, 3), stride=2, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_7')
+            bneck_8 = self.bottelneck_layer(bneck_7, is_training, 200, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_8')
             g(bneck_7)
             # [None x 4 x 4 x 80]
 
-            bneck_9 = self.bottelneck_layer(bneck_8, is_training, 184, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_9')
-            bneck_10 = self.bottelneck_layer(bneck_9, is_training, 184, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_10')
+            bneck_9 = self.bottelneck_layer(bneck_8, is_training, 184, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_9')
+            bneck_10 = self.bottelneck_layer(bneck_9, is_training, 184, 80, (3, 3), stride=1, padding='SAME', activation='HS', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_10')
             g(bneck_9)
             # [None x 4 x 4 x 80]
 
@@ -201,11 +201,11 @@ class MobileNet_v3:
             g(bneck_1)
             # [None x 16 x 16 x 16]
 
-            bneck_2 = self.bottelneck_layer(bneck_1, is_training, 72, 24, (3, 3), stride=2, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_2')
+            bneck_2 = self.bottelneck_layer(bneck_1, is_training, 72, 24, (3, 3), stride=2, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_2')
             g(bneck_2)
             # [None x 8 x 8 x 24]
 
-            bneck_3 = self.bottelneck_layer(bneck_2, is_training, 88, 24, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0, use_batch_norm=True, scope_name='bottleneck_3')
+            bneck_3 = self.bottelneck_layer(bneck_2, is_training, 88, 24, (3, 3), stride=1, padding='SAME', activation='RE', apply_se=False, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_3')
             bneck_4 = self.bottelneck_layer(bneck_3, is_training, 96, 40, (5, 5), stride=2, padding='SAME', activation='HS', apply_se=True, depth_mul=1.0, se_ratio=1.0/4.0, use_batch_norm=True, scope_name='bottleneck_4')
             g(bneck_4)
             # [None x 4 x 4 x 40]
@@ -244,7 +244,7 @@ class MobileNet_v3:
                 conv3 = tf.layers.conv2d(gap, 1024, (1, 1), 1, 'SAME', activation=None, use_bias=True, kernel_initializer=self.k_init, kernel_regularizer=self.k_reg, name='conv3')
                 conv3 = self.hard_swish(conv3)
                 g(conv3)
-                # [None x 1 x 1 x 1280]
+                # [None x 1 x 1 x 1024]
                 
                 conv4 = tf.layers.conv2d(conv3, self.num_classes, (1, 1), 1, 'SAME', activation=None, use_bias=True, kernel_initializer=self.k_init, kernel_regularizer=self.k_reg, name='conv4')
                 g(conv4)

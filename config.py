@@ -24,6 +24,14 @@ def get_model(model_name, x, is_training):
         from models.ResNet34 import ResNet34
         import models.ResNet34_config as config
         model = ResNet34()
+	elif model_name == 'resnet18_wo_residual':
+        from models.ResNet18_wo_residual import ResNet18_wo_res
+        import models.ResNet18_wo_residual_config as config
+        model = ResNet18_wo_res()
+    elif model_name == 'resnet34_wo_residual':
+        from models.ResNet34_wo_residual import ResNet34_wo_res
+        import models.ResNet34_wo_residual_config as config
+        model = ResNet34_wo_res()
     elif model_name == 'resnet18_v2':
         from models.ResNet18_v2 import ResNet18_v2
         import models.ResNet18_v2_config as config

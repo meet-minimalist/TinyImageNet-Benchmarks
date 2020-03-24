@@ -122,7 +122,7 @@ class Classifier:
         ### Restrict the GPU usage for training if possible. ###
         sess_config = tf.ConfigProto()
         sess_config.gpu_options.allow_growth = True
-        #sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
+        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
         
         with tf.Session(config=sess_config) as sess:
             sess.run(tf.global_variables_initializer())
@@ -228,7 +228,7 @@ class Classifier:
         ### Restrict the GPU usage for training if possible. ###
         sess_config = tf.ConfigProto()
         sess_config.gpu_options.allow_growth = True
-        #sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
+        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
                
         ### Start training. ###
         with tf.Session(config=sess_config) as sess:
@@ -342,7 +342,13 @@ class Classifier:
             total_imgs = config.test_img_cnt
 
         restorer = tf.train.Saver()                    
-        with tf.Session() as sess:
+        
+        ### Restrict the GPU usage for training if possible. ###
+        sess_config = tf.ConfigProto()
+        sess_config.gpu_options.allow_growth = True
+        sess_config.gpu_options.per_process_gpu_memory_fraction = 0.4
+        
+        with tf.Session(config=sess_config) as sess:
             sess.run(tf.global_variables_initializer())
             restorer.restore(sess, ckpt_path)
             top_1_acc = 0

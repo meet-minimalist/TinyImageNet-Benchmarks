@@ -10,7 +10,7 @@ minLR = 6.603e-6     # 846
 maxLR = 0.02106     # 1461
 step_factor = 2
 
-weight_decay = 0.0001
+weight_decay = 0.00001
 
 def g(x):
     print(x.name, " ", x.get_shape().as_list())
