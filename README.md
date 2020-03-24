@@ -61,6 +61,8 @@ Download link for the dataset: https://tiny-imagenet.herokuapp.com/
 - The tfrecord have been created in following way.
     - First run the script "./misc_utils/create_train_test_ann.py" to generate txt file for training and test set annotations. This will be used for tfrecord generation.
     - Now uncomment line 63-64 in "tfrecords_helper.py" and run file to generate tfrecords for TinyImageNet or any other dataset at given location.
+- Note : Here, the test set means validation set which have been provided from TinyImageNet site, which has labels in it. The actual test set from TinyImageNet site doesn't contain any labels, so we have used validation set as a test set during training.
+
 
 ### File structre:
 - data_aug
