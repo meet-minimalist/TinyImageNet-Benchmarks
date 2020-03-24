@@ -7,10 +7,11 @@ Created on Sat Mar 03 23:03:43 2020
 
 import os
 import argparse
-import config
 from TinyImageNetClassifier import Classifier
 import tensorflow as tf 
 
+# Note : Here, test set means validation set which have been provided from TinyImageNet site, which has labels in it.
+#        The actual test set from TinyImageNet site doesn't contain any labels, so we use validation set as a test set during training.
 parser = argparse.ArgumentParser()
 parser.add_argument("--gpu", type=str, default='True', help='Use gpu for processing. Options: True and False. Default: True')
 parser.add_argument("--model", type=str, help='Use gpu for processing. \n Options \
@@ -54,4 +55,6 @@ if __name__ == "__main__":
 			model.eval_on_dataset(ckpt_path, train_dataset=True)
 		else:
 			model.eval_on_dataset(ckpt_path, train_dataset=False)
-			
+	else:
+		print("Please provide proper mode of action.")
+		exit(0)
