@@ -15,13 +15,14 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--gpu", type=str, default='True', help='Use gpu for processing. Options: True and False. Default: True')
 parser.add_argument("--model", type=str, help='Use gpu for processing. \n Options \
 							1. vgg16, 2. vgg16_bn, \
-							3. resnet18, 4. resnet34, \
-							5. resnet18_v2, 6. resnet34_v2, \
-							7. inception_v1, 8. inception_v2, 9. inception_v3, 10. inception_v4, 11. inception_resnet_v2, 12. xception, \
-							13. mobilnet_v1, 14. mobilenet_v2, 15. mobilenet_v3_small, 16. mobilenet_v3_large, \
-							17. squeezenet, \
-							18. nasnet, 19. mnasnet, \
-							20. efficientnet ')
+							3. resnet18_wo_residual, 4. resnet34_wo_residual, \
+							5. resnet18, 6. resnet34, \
+							7. resnet18_v2, 8. resnet34_v2, \
+							9. inception_v1, 10. inception_v2, 11. inception_v3, 12. inception_v4, 13. inception_resnet_v2, 14. xception, \
+							15. mobilnet_v1, 16. mobilenet_v2, 17. mobilenet_v3_small, 18. mobilenet_v3_large, \
+							19. squeezenet, \
+							20. nasnet, 21. mnasnet, \
+							22. efficientnet ')
 parser.add_argument("--mode", type=str, default='training', help='Mode of training: dry_run, training and eval. Default: training')
 parser.add_argument("--ckpt_path", type=str, help="Checkpoint folder for evaluation purposes. (Latest checkpoint will be selected automatically.")
 parser.add_argument("--eval_dataset", type=str, help="Evaluation to be done on which dataset : train or test, Default: train")
