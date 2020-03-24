@@ -1,12 +1,14 @@
 # TinyImageNet Benchmarks:
 In this repo, I have benchmarked various computer vision architectures on Tiny ImageNet dataset.
 
-# TinyImageNet:
+### TinyImageNet:
 This dataset consists of 200 classes from original ImageNet dataset. Each class is having 500 train images, 50 validation images. So 1,00,000 images for training and 10,000 images for validation.
 Download link for the dataset: https://tiny-imagenet.herokuapp.com/
 
+### Get Started:
+![](https://github.com/meet-minimalist/TinyImageNet-Benchmarks/blob/master/misc_utils/get_started.png)
 
-# Benchmark Results:
+### Benchmark Results:
 
 **Sr. No.**|**Model**|**Train Top-1 Acc**|**Train Top-5 Acc**|**Test Top-1 Acc**|**Test Top-5 Acc**
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:
@@ -78,9 +80,6 @@ Download link for the dataset: https://tiny-imagenet.herokuapp.com/
 - run_classifier.py
     - for model training initial point.
 
-### Todos
- - [x] Train each model and update the accuracies
-
 ### References:
 - Data augmentation library taken from : https://github.com/Paperspace/DataAugmentationForObjectDetection
 - Paper references
@@ -100,4 +99,7 @@ Download link for the dataset: https://tiny-imagenet.herokuapp.com/
     - EfficientNet [https://arxiv.org/abs/1905.11946]
     - Shufflenet [https://arxiv.org/abs/1707.01083]
     - ResNext [https://arxiv.org/abs/1611.05431]
+
+### Todos
+ - [x] Train each model and update the accuracies
 
