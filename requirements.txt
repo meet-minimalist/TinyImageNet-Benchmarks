@@ -1,5 +1,5 @@
 tqdm==4.40.2
 imgaug==0.2.9
-tensorflow==1.15.2
+tensorflow==2.5.3
 asposestorage==1.0.2
 numpy==1.18.1
